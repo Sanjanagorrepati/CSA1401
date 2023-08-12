@@ -1,0 +1,36 @@
+#include<stdio.h>
+int main()
+{
+     int age;
+     printf("Enter Age of Person : ");
+     scanf("%d",&age);
+     if(age>17)
+          printf("\nPerson is Eligible for Voting");
+     else
+          printf("\nPerson is NOT Eligible for Voting");
+     return 0;
+}
+Program: (email_valid.l)
+%{
+int flag=0;
+%}
+%%
+[a-z . 0-9]+@[a-z]+".com"|".in" { flag=1; }
+%%
+int main()
+{
+yylex();
+if(flag==1)
+printf("Accepted");
+else
+printf("Not Accepted");
+}
+int yywrap()
+{ return 1;
+ }
+
+Output:
+
+sse123@gmail.com
+
+Accepted
